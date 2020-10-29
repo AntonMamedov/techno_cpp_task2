@@ -71,6 +71,13 @@ script:
     - make
     - cd ../..
 
+    - cd ./test
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+    - cd ../..
+
     - chmod u+x gtest_runer.sh
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then ./gtest_runer.sh; fi
     - cd filemetrics
