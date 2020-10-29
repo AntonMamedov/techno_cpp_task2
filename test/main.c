@@ -9,10 +9,10 @@
 /*
  * В этом таргете через popen вызываются 2 прграммы, многопоточная и однопоточная
  */
-int main() {
-    const char* multi_thread_test_path = "./../../multi_thread_test/build/multi_thread_test";
-    const char* single_thread_test_path = "./../../non_thread_test/build/non_thread_test";
-    const char* books = "../../main_test_dir";
+int main(int argc, char** argv) {
+    const char* single_thread_test_path = argv[1];
+    const char* multi_thread_test_path = argv[2];
+    const char* books = argv[3];
     //замер скорости однопоточного варианта
     double non_thread_speed = 0;
     char single_command[MAX_COMMAND_LENGTH];
