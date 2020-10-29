@@ -43,47 +43,9 @@ matrix:
 
 script:
     # скрипт сборки и тестирования проекта:
-    - cd ./filemetrics
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make
-        
-    - cd ../..
-        
-    - cd ./filemetrics_multithreaded
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make
-        
-    - cd ../..
-        
-    - cd ./multi_thread_test
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make
-        
-    - cd ../..
-        
-    - cd ./non_thread_test
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make
-        
-    - cd ../..
-        
-    - cd ./test
-    - mkdir build
-    - cd build
-    - cmake ..
-    - make
-        
-    - cd ../..
+    - chmod u+x builder.sh
     - chmod u+x gtest_runer.sh
-
+    - ./builder.sh
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then ./gtest_runer.sh; fi
     - cd filemetrics/build
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then lcov --capture --directory . --output-file coverage.info; fi

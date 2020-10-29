@@ -11,7 +11,7 @@
  */
 int main() {
     const char* multi_thread_test_path = "./../../multi_thread_test/build/multi_thread_test";
-    const char* single_thread_test_path = "./../../multi_thread_test/build/non_thread_test";
+    const char* single_thread_test_path = "./../../non_thread_test/build/non_thread_test";
     //замер скорости однопоточного варианта
     double non_thread_speed = 0;
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
@@ -26,7 +26,7 @@ int main() {
     int thread_num = 2;
     double multi_thread_speed = 0;
     char command[MAX_COMMAND_LENGTH];
-    snprintf(command, sizeof command, "%s/%d", multi_thread_test_path,thread_num);
+    snprintf(command, sizeof command, "%s %d", multi_thread_test_path,thread_num);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
         FILE* multy_thread_proc = popen(command, "r");
