@@ -5,6 +5,10 @@
 #define FROZE_SPEED_NUM 10
 #define MAX_TEST_PROC_OUTPUT_SIZE 100000
 #define MAX_COMMAND_LENGTH 500
+
+/*
+ * В этом таргете через popen вызываются 2 прграммы, многопоточная и однопоточная
+ */
 int main() {
     //замер скорости однопоточного варианта
     double non_thread_speed = 0;

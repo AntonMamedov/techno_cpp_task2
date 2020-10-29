@@ -10,6 +10,7 @@ TEST(StrMapInitTest, NormalInitTest){
     int state = map_init(&map);
     ASSERT_EQ(map.size, 0);
     ASSERT_EQ(state, 0);
+    map_release(&map);
 }
 
 TEST(StrMapInitTest, NULLlInitTest){
