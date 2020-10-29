@@ -1,0 +1,8 @@
+
+[submodule "filemetrics_multithreaded/unit_tests/googletest"]
+	path = filemetrics_multithreaded/unit_tests/googletest
+	url = https://github.com/google/googletest.git
+
+[submodule "filemetrics/unit_tests/googletest"]
+	path = filemetrics_multithreaded/unit_tests/googletest
+	url = https://github.com/google/googletest.git
