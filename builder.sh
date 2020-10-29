@@ -1,46 +1,41 @@
 #! /bin/bash
 
-cd filemetrics
+cd ./filemetrics
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-cmake --build .
+cmake ..
+make
 
 cd ../..
 
-cd filemetrics_multithreaded
+cd ./filemetrics_multithreaded
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-cmake --build .
+cmake ..
+make
 
 cd ../..
 
-cd multi_thread_test
+cd ./multi_thread_test
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-cmake --build .
+cmake ..
+make
 
 cd ../..
 
-cd non_thread_test
+cd ./non_thread_test
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-cmake --build .
+cmake ..
+make
 
 cd ../..
 
-cd test
+cd ./test
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-cmake --build .
+cmake ..
+make
 
 cd ../..
-
-cd test_dirs
-mkdir test_dir_1
-
-cd ..
