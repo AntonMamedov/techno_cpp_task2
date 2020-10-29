@@ -12,8 +12,11 @@
 int main() {
     const char* multi_thread_test_path = "./../../multi_thread_test/build/multi_thread_test";
     const char* single_thread_test_path = "./../../non_thread_test/build/non_thread_test";
+    const char* books = "../../main_test_dir";
     //замер скорости однопоточного варианта
     double non_thread_speed = 0;
+    char single_command[MAX_COMMAND_LENGTH];
+    sprintf(single_command,  "%s %s", multi_thread_test_path, books);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
         FILE* non_thread_proc = popen(single_thread_test_path, "r");
@@ -25,11 +28,11 @@ int main() {
     //замер скорости многопоточного варианта
     int thread_num = 2;
     double multi_thread_speed = 0;
-    char command[MAX_COMMAND_LENGTH];
-    snprintf(command, sizeof command, "%s %d", multi_thread_test_path,thread_num);
+    char multi_command[MAX_COMMAND_LENGTH];
+    sprintf(multi_command, "%s %d", multi_thread_test_path, thread_num);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
-        FILE* multy_thread_proc = popen(command, "r");
+        FILE* multy_thread_proc = popen(multi_command, "r");
         current_time =  clock() - current_time;
         multi_thread_speed+= (double)current_time / CLOCKS_PER_SEC;
         fclose(multy_thread_proc);
@@ -38,7 +41,7 @@ int main() {
 
     //сравнение выводов
     FILE* non_thread_proc = popen(single_thread_test_path, "r");
-    FILE* multi_thread_proc = popen(command, "r");
+    FILE* multi_thread_proc = popen(multi_command, "r");
 
     char buf1[MAX_TEST_PROC_OUTPUT_SIZE];
     char buf2[MAX_TEST_PROC_OUTPUT_SIZE];
