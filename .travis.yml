@@ -52,7 +52,7 @@ script:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then bash <(curl -s https://codecov.io/bash); fi
     - cd ../..
     - cd filemetrics_multithreaded/build
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then lcov --capture --directory . --output-file coverage.info; fi     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then bash <(curl -s https://codecov.io/bash); fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then lcov --capture --directory . --output-file coverage.info; fi  - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then bash <(curl -s https://codecov.io/bash); fi
     - cd ../..
     - cd filemetrics/src
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
@@ -61,4 +61,5 @@ script:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
     - cd ..
     - cd test/build
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./test; fi
+    - ls
+    - ./test
