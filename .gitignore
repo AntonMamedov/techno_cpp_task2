@@ -1,17 +1,17 @@
 filemetrics/cmake-build-debug/
 filemetrics_multithreaded/cmake-build-debug/
-multi_thread_test/cmake-build-debug/
-non_thread_test/cmake-build-debug/
-test/cmake-build-debug/
+multi_test/cmake-build-debug/
+single_test/cmake-build-debug/
 
 filemetrics/.idea/
 filemetrics_multithreaded/.idea/
-multi_thread_test/.idea/
-non_thread_test/.idea/
-test/.idea/
+multi_test/.idea/
+single_test//.idea/
 
 filemetrics/build/
 filemetrics_multithreaded/build/
-multi_thread_test/build/
-non_thread_test/build/
-test/build/
+multi_est/build/
+single_test/build/
+
+test
+builder.sh
