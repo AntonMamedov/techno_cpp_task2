@@ -60,3 +60,6 @@ script:
     - cd ..
     - cd filemetrics_multithreaded/src
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
+    - cd ..
+    - cd test/build
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./test; fi
