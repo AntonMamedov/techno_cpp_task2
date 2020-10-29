@@ -52,6 +52,7 @@ script:
     - cd ..
     - cd filemetrics_multithreaded
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
+    - cd ..
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./non_thread_test/build/non_thread_test; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./multi_thread_test/build/multi_thread_test 2; fi
     - cd test/build
