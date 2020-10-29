@@ -14,7 +14,7 @@ int main() {
     double non_thread_speed = 0;
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
-        FILE* non_thread_proc = popen("./../../non_thread_test/build/test", "r");
+        FILE* non_thread_proc = popen("./../../non_thread_test/build/non_thread_test", "r");
         current_time =  clock() - current_time;
         non_thread_speed+=(double)current_time / CLOCKS_PER_SEC;
         fclose(non_thread_proc);
@@ -35,7 +35,7 @@ int main() {
     multi_thread_speed= multi_thread_speed / FROZE_SPEED_NUM;
 
     //сравнение выводов
-    FILE* non_thread_proc = popen("./../../non_thread_test/build/test", "r");
+    FILE* non_thread_proc = popen("./../../non_thread_test/build/non_thread_test", "r");
     FILE* multi_thread_proc = popen(command, "r");
 
     char buf1[MAX_TEST_PROC_OUTPUT_SIZE];
