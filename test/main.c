@@ -29,7 +29,7 @@ int main() {
     int thread_num = 2;
     double multi_thread_speed = 0;
     char multi_command[MAX_COMMAND_LENGTH];
-    sprintf(multi_command, "%s %d", multi_thread_test_path, thread_num);
+    sprintf(multi_command, "%s %s %d", multi_thread_test_path, books ,thread_num);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
         FILE* multy_thread_proc = popen(multi_command, "r");
