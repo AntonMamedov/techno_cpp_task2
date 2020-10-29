@@ -51,6 +51,8 @@ int main(int argc, char** argv) {
     buf2[buf2_size] = '\0';
     pclose(multi_thread_proc);
     pclose(non_thread_proc);
+    printf("Single-threaded option output\n%s\n", buf1);
+    printf("\nOutput of multithreaded option\n%s\n", buf2);
     int cmp_res = strcmp(buf2, buf1);
     printf("\n"
            "The average speed of a single-threaded version of the program is %f seconds\n"
