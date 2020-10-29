@@ -16,10 +16,10 @@ int main() {
     //замер скорости однопоточного варианта
     double non_thread_speed = 0;
     char single_command[MAX_COMMAND_LENGTH];
-    sprintf(single_command,  "%s %s", multi_thread_test_path, books);
+    sprintf(single_command,  "%s %s", single_thread_test_path, books);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
-        FILE* non_thread_proc = popen(single_thread_test_path, "r");
+        FILE* non_thread_proc = popen(single_command, "r");
         current_time =  clock() - current_time;
         non_thread_speed+=(double)current_time / CLOCKS_PER_SEC;
         fclose(non_thread_proc);
@@ -32,15 +32,15 @@ int main() {
     sprintf(multi_command, "%s %s %d", multi_thread_test_path, books ,thread_num);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
-        FILE* multy_thread_proc = popen(multi_command, "r");
+        FILE* multi_thread_proc = popen(multi_command, "r");
         current_time =  clock() - current_time;
         multi_thread_speed+= (double)current_time / CLOCKS_PER_SEC;
-        fclose(multy_thread_proc);
+        fclose(multi_thread_proc);
     }
     multi_thread_speed= multi_thread_speed / FROZE_SPEED_NUM;
 
     //сравнение выводов
-    FILE* non_thread_proc = popen(single_thread_test_path, "r");
+    FILE* non_thread_proc = popen(single_command, "r");
     FILE* multi_thread_proc = popen(multi_command, "r");
 
     char buf1[MAX_TEST_PROC_OUTPUT_SIZE];
