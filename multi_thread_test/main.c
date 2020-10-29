@@ -10,3 +10,4 @@ int main(int argc, char** argv) {
     dir_metric_data_release(&metric_data);
     return 0;
 }
+0

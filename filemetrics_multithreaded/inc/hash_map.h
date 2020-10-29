@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "str_map.h"
 
-#define HASH_MAP_SIZE 40009
+#define HASH_MAP_SIZE 70001
 
 typedef struct{
     StrMap table[HASH_MAP_SIZE];
