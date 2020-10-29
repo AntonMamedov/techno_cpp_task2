@@ -1,0 +1,1 @@
+/usr/bin/cc   -pthread -g   CMakeFiles/multi_test.dir/main.c.o  -o multi_test  ../../filemetrics_multithreaded/build/libfilemetrics.a -lm 
