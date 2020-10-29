@@ -5,6 +5,7 @@ mkdir build
 cd build
 cmake ..
 make
+ln
 
 cd ../..
 
@@ -13,6 +14,7 @@ mkdir build
 cd build
 cmake ..
 make
+ln
 
 cd ../..
 
@@ -21,6 +23,7 @@ mkdir build
 cd build
 cmake ..
 make
+ln
 
 cd ../..
 
@@ -29,6 +32,7 @@ mkdir build
 cd build
 cmake ..
 make
+ln
 
 cd ../..
 
@@ -37,5 +41,6 @@ mkdir build
 cd build
 cmake ..
 make
+ln
 
 cd ../..
