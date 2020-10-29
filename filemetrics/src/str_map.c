@@ -127,7 +127,6 @@ void local_map_release(StrMapNode* node){
 }
 
 StrMapNode *map_node_init(char *key) {
-    StrMapNode *map_node_init(char *key) {
         if (key == NULL)
             return NULL;
         else {
@@ -137,5 +136,4 @@ StrMapNode *map_node_init(char *key) {
             str_init(key, &elem->data.key);
             elem->data.val = 0;
         }
-    }
 }
