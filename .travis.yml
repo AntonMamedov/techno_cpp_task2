@@ -48,41 +48,25 @@ script:
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
     - cmake --build .
-        
     - cd ../..
-        
     - cd ./filemetrics_multithreaded
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
     - cmake --build .
-        
-    - cd ../..
-        
+    - cd ../..     
     - cd ./multi_test
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-    - cmake --build .
-        
+    - cmake --build .        
     - cd ../..
-        
-    - cd ./non_thread_test
+    - cd ./single_test
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-    - cmake --build .
-        
+    - cmake --build .  
     - cd ../..
-        
-    - cd ./test
-    - mkdir build
-    - cd build
-    - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
-    - cmake --build .
-        
-    - cd ../..
-
     - chmod u+x gtest_runer.sh
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then ./gtest_runer.sh; fi
     - cd filemetrics
@@ -92,6 +76,7 @@ script:
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
     - cd ..
     - ./multi_test/build/multi_test main_test_dir 2
+    - 
    # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./non_thread_test/build/non_thread_test main_test_dir; fi
    # - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./multi_thread_test/build/multi_thread_test main_test_dir 2; fi
    # - ./test/build/test_all non_thread_test/build/non_thread_test multi_thread_test/build/multi_thread_test main_test_dir

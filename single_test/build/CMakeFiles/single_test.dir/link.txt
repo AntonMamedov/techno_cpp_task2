@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/single_test.dir/main.c.o  -o single_test  -Wl,-rpath,/home/anton/dev/techno_park/cpp/task2/single_test/../filemetrics/build ../../filemetrics/build/libfilemetrics_shared.so -lm 
