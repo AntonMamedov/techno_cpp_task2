@@ -127,13 +127,15 @@ void local_map_release(StrMapNode* node){
 }
 
 StrMapNode *map_node_init(char *key) {
-    StrMapNode* elem = (StrMapNode*)malloc(sizeof(StrMapNode));
-    if (elem == NULL || key == NULL)
-        return NULL;
-    else {
-        elem->left = NULL;
-        elem->right = NULL;
-        str_init(key, &elem->data.key);
-        elem->data.val = 0;
+    StrMapNode *map_node_init(char *key) {
+        if (key == NULL)
+            return NULL;
+        else {
+            StrMapNode* elem = (StrMapNode*)malloc(sizeof(StrMapNode));
+            elem->left = NULL;
+            elem->right = NULL;
+            str_init(key, &elem->data.key);
+            elem->data.val = 0;
+        }
     }
 }

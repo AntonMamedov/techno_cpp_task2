@@ -33,6 +33,7 @@ TEST(StrMapNodeInitTest, NULLMapNodeInitTest) {
     char *key = NULL;
     StrMapNode *map_node = map_node_init(NULL);
     ASSERT_EQ(NULL, map_node);
+
 }
 
 //Тестирования функции вставки и поиска в дереве
