@@ -1,7 +1,7 @@
 #include <string.h>
 #include "str_map.h"
 
-StrMapNode *map_node_init(char *key);
+StrMapNode *map_node_init(const char *key);
 StrMapData* local_map_insert_or_search(char *key, StrMapNode *node, int* flag, size_t* size);
 void local_map_release(StrMapNode* node);
 void local_map_pre_order(StrMapNode* node, void (*work)(StrMapData *, void *), void *data_for_work);
@@ -126,7 +126,7 @@ void local_map_release(StrMapNode* node){
     free(node->right);
 }
 
-StrMapNode *map_node_init(char *key) {
+StrMapNode *map_node_init(const char *key) {
     if (key == NULL)
         return NULL;
     else {
@@ -135,5 +135,6 @@ StrMapNode *map_node_init(char *key) {
         elem->right = NULL;
         str_init(key, &elem->data.key);
         elem->data.val = 0;
+        return elem;
     }
 }
