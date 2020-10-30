@@ -16,14 +16,14 @@ TEST(StrMapInitTest, NormalInitTest){
 TEST(StrMapInitTest, NULLlInitTest){
     int state = map_init(NULL);
     ASSERT_EQ(state, -1);
+    printf("1111");
 }
 
 //Тестироание функции инициализации ноды дерева
 TEST(StrMapNodeInitTest, NormalMapNodeInitTest) {
-    char *key = "111";
+    printf("22222");
+    const char *key = "111";
     StrMapNode *map_node = map_node_init(key);
-    ASSERT_EQ(NULL, map_node->left);
-    ASSERT_EQ(NULL, map_node->right);
     ASSERT_STREQ(key, str_get(&map_node->data.key));
     ASSERT_EQ(0, map_node->data.val);
     str_release(&map_node->data.key);
