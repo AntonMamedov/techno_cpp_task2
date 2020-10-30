@@ -4,7 +4,6 @@ sudo:     required  # используем Virtual Machine (а не Docker conta
 language: c
 os:
     - linux
-    - osx
 
 compiler:
     - gcc
