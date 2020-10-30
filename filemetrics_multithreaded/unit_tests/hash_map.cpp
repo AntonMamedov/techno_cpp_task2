@@ -102,6 +102,7 @@ TEST(HashMapInserSearchTest, SearchElemTest){
     }
     hash_map_release(&map);
 }
+
 const size_t iter_num = 1000000;
 void* thread_worker(void* data){
     const char* key = "111";
@@ -111,6 +112,7 @@ void* thread_worker(void* data){
         hash_map_insert_or_search_and_inc(key, 1, map, &flag);
     return NULL;
 }
+
 TEST(HashMapInserSearchTest, SearchAndIncMultiThreadInSingleElemTest){
     const size_t thread_num = 300;
     const char* key = "111";

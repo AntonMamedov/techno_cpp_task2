@@ -26,24 +26,24 @@ int main(int argc, char** argv) {
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
         FILE* non_thread_proc = popen(single_command, "r");
-        fread(buf1, sizeof(char), MAX_TEST_PROC_OUTPUT_SIZE, non_thread_proc);
+        size_t num = fread(buf1, sizeof(char), MAX_TEST_PROC_OUTPUT_SIZE, non_thread_proc);
         current_time =  clock() - current_time;
         non_thread_speed+=(double)current_time / CLOCKS_PER_SEC;
-        fclose(non_thread_proc);
+        pclose(non_thread_proc);
     }
     non_thread_speed = non_thread_speed / FROZE_SPEED_NUM;
     //замер скорости многопоточного варианта
-    int thread_num = atoi(argv[5]);
+    int thread_num = atoi(argv[4]);
     double multi_thread_speed = 0;
     char multi_command[MAX_COMMAND_LENGTH];
     sprintf(multi_command, "%s %s %d", multi_thread_test_path, books ,thread_num);
     for (size_t i = 0; i < FROZE_SPEED_NUM; i++){
         clock_t  current_time = clock();
         FILE* multi_thread_proc = popen(multi_command, "r");
-        fread(buf2, sizeof(char), MAX_TEST_PROC_OUTPUT_SIZE, multi_thread_proc);
+        size_t num = fread(buf2, sizeof(char), MAX_TEST_PROC_OUTPUT_SIZE, multi_thread_proc);
         current_time =  clock() - current_time;
         multi_thread_speed+= (double)current_time / CLOCKS_PER_SEC;
-        fclose(multi_thread_proc);
+        pclose(multi_thread_proc);
     }
     multi_thread_speed= multi_thread_speed / FROZE_SPEED_NUM;
 

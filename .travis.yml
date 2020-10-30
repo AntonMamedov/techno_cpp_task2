@@ -37,28 +37,24 @@ script:
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
     - cmake --build .
     - cd ../..
-
     - cd ./filemetrics_multithreaded
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
     - cmake --build . 
     - cd ../..     
-
     - cd ./multi_test
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
     - cmake --build . 
     - cd ../..
-
     - cd ./single_test
     - mkdir build
     - cd build
     - cmake .. -DCMAKE_BUILD_TYPE=$BUILD_CONFIGURATION -DTARGET_CPU=$TARGET_CPU -DCMAKE_C_FLAGS="--coverage" -DCMAKE_CXX_FLAGS="--coverage"
     - cmake --build .
     - cd ../..
-
     - cd ./test
     - mkdir build
     - cd build
@@ -79,6 +75,14 @@ script:
     - cd ..
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
     - cd ..
+    #запускаем таргеты, с подключенными в них библиотеками под санитайзером
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./single_test/build/single_test main_test_dir; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./multi_test/build/multi_test main_test_dir 4; fi
+    #сравниваем скорость однопоточного варианта с многопоточным с использованием 2 потоков
     - ./test/build/test_all single_test/build/single_test multi_test/build/multi_test main_test_dir 2
+    #сравниваем скорость однопоточного варианта с многопоточным с использованием 4 потоков
+    - ./test/build/test_all single_test/build/single_test multi_test/build/multi_test main_test_dir 4
+    #сравниваем скорость однопоточного варианта с многопоточным с использованием 8 потоков
+    - ./test/build/test_all single_test/build/single_test multi_test/build/multi_test main_test_dir 8
+    #сравниваем скорость однопоточного варианта с многопоточным с использованием 40 потоков
+    - ./test/build/test_all single_test/build/single_test multi_test/build/multi_test main_test_dir 40
