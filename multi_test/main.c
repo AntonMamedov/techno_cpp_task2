@@ -3,7 +3,7 @@
 #include "file_metric.h"
 int main(int argc, char** argv) {
     if (argc < 3){
-        return -1;
+        return 0;
     }
     else{
         const char* dir_path = argv[1];

@@ -79,4 +79,6 @@ script:
     - cd ..
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
     - cd ..
-    - ./test/build/test_all single_test/build/single_test multi_test/build/multi_test main_test_dir
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./single_test/build/single_test main_test_dir; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then valgrind --tool=memcheck --leak-check=yes ./multi_test/build/multi_test main_test_dir 4; fi
+    - ./test/build/test_all single_test/build/single_test multi_test/build/multi_test main_test_dir 2

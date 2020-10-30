@@ -10,8 +10,8 @@ typedef struct{
     pthread_mutex_t mutex_table[HASH_MAP_SIZE];
 }HashMap;
 
-void hash_map_init(HashMap* map);
+int hash_map_init(HashMap* map);
 
-StrMapData* hash_map_insert_or_search_and_inc(char* key, uint64_t inc_num, HashMap * map, int* flag);
+StrMapData* hash_map_insert_or_search_and_inc(const char *key, uint64_t inc_num, HashMap * map, int* flag);
 
 void hash_map_release(HashMap* map);
