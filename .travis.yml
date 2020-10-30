@@ -83,6 +83,7 @@ script:
     - cd ..
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
     - cd ..
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then valgrind --tool=memcheck --leak-check=yes ./filemetrics_multithreaded/build/unit_tests/Google_Tests_run; fi
     - cd filemetrics_multithreaded/build
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then lcov --capture --directory . --output-file coverage.info; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then bash <(curl -s https://codecov.io/bash); fi
