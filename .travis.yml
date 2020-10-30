@@ -4,6 +4,7 @@ sudo:     required  # используем Virtual Machine (а не Docker conta
 language: c
 os:
     - linux
+    - osx
 
 compiler:
     - gcc
@@ -79,7 +80,9 @@ script:
 
     - chmod u+x gtest_runer.sh
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then ./gtest_runer.sh; fi
-    - cd filemetrics
+    - cd filemetrics/build
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]] && [[ "${CC_FOR_BUILD}" =~ gcc$ ]]; then lcov --capture --directory . --output-file coverage.info; fi
+    - cd ..
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cppcheck --enable=warning,performance,information src/*.c; fi
     - cd ..
     - cd filemetrics_multithreaded
