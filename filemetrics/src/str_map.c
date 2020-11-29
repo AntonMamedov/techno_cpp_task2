@@ -2,7 +2,7 @@
 #include "str_map.h"
 
 StrMapNode *map_node_init(const char *key);
-StrMapData* local_map_insert_or_search(char *key, StrMapNode *node, int* flag, size_t* size);
+StrMapData* local_map_insert_or_search(const char *key, StrMapNode *node, int* flag, size_t* size);
 void local_map_release(StrMapNode* node);
 void local_map_pre_order(StrMapNode* node, void (*work)(StrMapData *, void *), void *data_for_work);
 /*
@@ -21,7 +21,7 @@ int map_init(StrMap *map){
     }
 }
 
-StrMapData *map_insert_or_search(char *key, StrMap *map, int* flag){
+StrMapData *map_insert_or_search(const char *key, StrMap *map, int* flag){
     if (key == NULL || flag == NULL)
         return NULL;
     else {
@@ -54,7 +54,7 @@ StrMapData *map_insert_or_search(char *key, StrMap *map, int* flag){
     }
 }
 
-StrMapData* local_map_insert_or_search(char *key, StrMapNode *node, int* flag, size_t* size){
+StrMapData* local_map_insert_or_search(const char *key, StrMapNode *node, int* flag, size_t* size){
     if (key == NULL || flag == NULL || node == NULL)
         return NULL;
     else {

@@ -22,9 +22,10 @@ typedef struct{
 
 void file_word_data_init(FileWordData* data, const char *filename, WordTf_idf* word_list, size_t word_list_size);
 int  parse_dir(const char *dir_path, Vector *dest);
-int  get_words(char* file_path, StrMap* word_map);
+int  get_words(const char *file_path, StrMap* word_map);
 int  get_tf_metric_for_file(const char *dir_path, FileWordData* data, StrMap* global_word_map);
-void get_tf_metric_for_dir(char *dir_path, DirMetricData *metric_data, size_t start_index_in_vec, size_t block_size);
+void get_tf_metric_for_dir(const char *dir_path, DirMetricData *metric_data,
+                           size_t start_index_in_vec, size_t block_size);
 void calculate_metric_for_dir(DirMetricData *metric_data, size_t start_index_in_vec, size_t block_size);
 void word_list_filling(StrMapData* data, WordListFillingData* work_data);
 void file_word_data_release(FileWordData* elem);
@@ -61,7 +62,7 @@ void file_word_data_init(FileWordData* data, const char *filename, WordTf_idf *w
     pq_init(&data->idf_queue, 0);
 }
 
-int get_words(char* file_path, StrMap* word_map){
+int get_words(const char *file_path, StrMap* word_map){
     if (word_map == NULL || file_path == NULL)
         return -1;
     else {
@@ -133,7 +134,7 @@ int get_tf_metric_for_file(const char *dir_path, FileWordData* data, StrMap* glo
     }
 }
 
-void get_tf_metric_for_dir(char *dir_path, DirMetricData *metric_data, size_t start_index_in_vec, size_t block_size) {
+void get_tf_metric_for_dir(const char *dir_path, DirMetricData *metric_data, size_t start_index_in_vec, size_t block_size) {
     if (dir_path == NULL || metric_data == 0 || block_size == 0){
         return;
     }

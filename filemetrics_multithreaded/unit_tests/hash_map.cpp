@@ -130,3 +130,5 @@ TEST(HashMapInserSearchTest, SearchAndIncMultiThreadInSingleElemTest){
     EXPECT_EQ(data->val, iter_num * thread_num);
     hash_map_release(&map);
 }
+
+

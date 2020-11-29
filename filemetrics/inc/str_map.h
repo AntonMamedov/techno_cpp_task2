@@ -30,7 +30,7 @@ typedef struct{
 }StrMap;
 
 int map_init(StrMap *map);
-StrMapData* map_insert_or_search(char* key, StrMap* map, int* flag);
+StrMapData* map_insert_or_search(const char *key, StrMap* map, int* flag);
 int map_release(StrMap* map);
 int map_pre_order(StrMap* map, void(*work)(StrMapData* data, void* data_for_work), void* data_for_work);
 
